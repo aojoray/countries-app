@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WebService } from './service';
+import { Service } from './service';
+import { CountryInfoComponent } from './country/country.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
@@ -23,7 +24,8 @@ import {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountryInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import {
     BrowserAnimationsModule,
     MatButtonModule
   ],
-  providers: [WebService],
+  providers: [Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
