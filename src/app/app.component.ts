@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'countries-app';
+  histories = [];
+  searchCountry(country) {
+    this.histories.push(country);
+    console.log(this.histories);
+  }
+
 }
