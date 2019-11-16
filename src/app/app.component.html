@@ -1,15 +1,21 @@
 <div class="container">
-  <form>
+  <form #countryform= "ngForm" (ngSubmit)="searchCountrySubmit(countryform.value); countryform.resetForm()">
     <div class="form-group">
       <h1 class="text-center text-primary">Countries lookup</h1>
       <div class="input-group-prepend"> 
-        <input type="text" #country class="form-control" placeholder="Country name" name="country" ngModel>
-        <span class="input-group-text" (click)="searchCountry(country.value)">Search</span>
+        <input id="country-input" type="text" #country class="form-control" placeholder="Country name" name="country" ngModel>
+        <span class="input-group-text" (click)="searchCountry(country)">Search</span>
       </div>
     </div>
+    <div class="history">
+      <ul class="list-instyled">
+        <li *ngFor="let country of histories">{{country}}</li>
+      </ul>
+    </div>
   </form>
-  <!-- <p>{{country.value}}</p> -->
+
   <div class="data">
+    <p>Data Div</p>
     <ul class="list-instyled">
       <li *ngFor="let country of histories">{{country}}</li>
     </ul>

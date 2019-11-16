@@ -8,9 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'countries-app';
   histories = [];
-  searchCountry(country) {
-    this.histories.push(country);
-    console.log(this.histories);
+  searchCountry(input) {
+    let country = input.value;
+    if (country != null && country !== '') {
+      this.histories.push(country);
+      input.value = '';
+    }
   }
-
+  searchCountrySubmit(value: any) {
+    console.log(value);
+    if (value.country != null && value.country !== '') {
+      this.histories.push(value.country);
+    }
+  }
 }
