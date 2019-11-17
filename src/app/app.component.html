@@ -1,21 +1,7 @@
 <div class="container">
-  <!-- <form #countryform= "ngForm" (ngSubmit)="searchCountrySubmit(countryform.value); countryform.resetForm()">
-    <div class="form-group">
-      <h1 class="text-center text-primary">Countries lookup</h1>
-      <div class="input-group-prepend"> 
-        <input id="country-input" type="text" #country class="form-control" placeholder="Country name" name="country" ngModel>
-        <span class="input-group-text" (click)="searchCountry(country)">Search</span>
-      </div>
-    </div>
-    <div class="history">
-      <ul class="list-instyled">
-        <li *ngFor="let country of histories">{{country}}</li>
-      </ul>
-    </div>
-  </form> -->
 
   <div class="form-continer">
-    <form #countryform="ngForm" (ngSubmit)="searchCountrySubmit(countryform); countryform.resetForm()">
+    <form #countryform="ngForm" (ngSubmit)="countryform.resetForm()">
       <div class="form-group">
         <h1 class="text-center text-primary">Countries lookup</h1>
         <div class="input-group-prepend">
@@ -25,7 +11,7 @@
             <button mat-button type="submit" class="input-group-text" (click)="searchCountry(country)">Search</button>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let country of filteredOptions | async" [value]="country.name">
-                {{country.name}}
+                {{country.name}} ({{country.alpha2Code}})
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -33,21 +19,9 @@
       </div>
     </form>
 
-    <!-- <form (ngSubmit)="searchCountrySubmit()">
-      <mat-form-field>
-        <input type="text" placeholder="Country Name" matInput [formControl]="countryctrl"
-          [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of countries">
-            {{option.name}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-    </form> -->
-
     <div class="history">
       <ul class="list-instyled">
-        <li *ngFor="let country of countries; let i=index"><span *ngIf="i<10">{{country.name}}</span></li>
+        <li *ngFor="let country of histories; let i=index"><span *ngIf="i<10">{{country.name}} ({{country.alpha2Code}})</span></li>
       </ul>
     </div>
   </div>

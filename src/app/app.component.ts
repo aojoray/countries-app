@@ -25,26 +25,13 @@ export class AppComponent implements OnInit, OnDestroy {
   country = {};
   subscription: Subscription;
 
-  // myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
   constructor(private service: Service) {}
-  // constructor(public http: Http) { }
   results: any[] = [];
   queryField: FormControl = new FormControl();
-
   ngOnInit() {
-    // this.http.get('https://restcountries.eu/rest/v2/all')
-    //   .pipe(map((res: Response) => res.json()))
-    //   .subscribe(data => {
-    //     this.countries = data;
-    //     this.filteredOptions = this.countryctrl.valueChanges
-    //       .pipe(
-    //         startWith(''),
-    //         map(value => this._filter(value))
-    //       );
-    //   });
+
     this.service.getCountries().subscribe(res => {
       this.countries = res;
       this.filteredOptions = this.countryctrl.valueChanges
@@ -81,33 +68,30 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    console.log(value);
-    console.log(value[0]);
-    console.log(this.countries.filter(country => country.name.toLowerCase().includes(filterValue)));
+    const filterValue = value ? value.toLowerCase() : '';
+    // if (filterValue.length >= 3) {
     return this.countries.filter(country => country.name.toLowerCase().includes(filterValue));
-    // return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
-  searchCountry(input) {
-    // console.log(input);
-    let selected = input.value;
-    console.log(selected);
-    if (selected != null && selected !== '') {
-      this.histories.push(selected);
-      console.log(this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase())));
-      this.service.setCountry(this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase()))[0]);
-      input.value = '';
-      this.show = true;
-    }
-  }
-  searchCountrySubmit(value: any) {
-    console.log(value);
-    // console.log(value.input);
-    // console.log(value.value);
-    // if (value.country != null && value.country !== '') {
-    //   this.histories.push(value.country);
+      // return this.countries.filter(country => country.name.toLowerCase().indexOf(filterValue) === 0);
     // }
   }
 
+  // if(value) {
+  //   return this.stateGroups
+  //     .map(group => ({ letter: group.letter, names: _filter(group.names, value) }))
+  //     .filter(group => group.names.length > 0);
+  // }
+
+  searchCountry(input) {
+    console.log(input);
+    let selected = input.value;
+    // console.log(selected);
+    if (selected != null && selected !== '') {
+      // this.histories.push(selected);
+      // this.histories.push(this.countries.);
+      // console.log(this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase())));
+      this.service.setCountry(this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase()))[0]);
+      this.countryctrl.reset();
+      this.show = true;
+    }
+  }
 }
