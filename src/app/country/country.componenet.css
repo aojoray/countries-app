@@ -18,6 +18,7 @@ body {
 .key {
     width: 15em;
     max-width: 250px;
+    font-weight: bold;
 }
 
 .content {

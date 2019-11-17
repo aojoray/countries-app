@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class HistoryComponent implements OnInit {
   histories;
+  country;
   subscription: Subscription;
 
   constructor(private service: Service) {
@@ -19,6 +20,10 @@ export class HistoryComponent implements OnInit {
         this.histories = data;
       }
     });
+  }
+
+  loadInfo(country) {
+    this.service.setCountry(country);
   }
 
   ngOnInit() {
