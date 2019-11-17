@@ -16,11 +16,11 @@ body {
 }
 
 .key {
-    width: 10em;
-    max-width: 200px;
+    width: 15em;
+    max-width: 250px;
 }
 
 .content {
-    width: 15em;
-    max-width: 200px;
+    width: 40em;
+    max-width: 300px;
 }

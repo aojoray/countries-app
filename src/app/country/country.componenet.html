@@ -1,5 +1,6 @@
 <div *ngIf="country">
-  <img class="flag" src={{country.flag}}/><p>{{country.name}}</p>
+  <p>{{country.name}}</p>
+  <img class="flag" src={{country.flag}}/>
   <table mat-table [dataSource]="transformed">
     <ng-container matColumnDef="key">
       <td class="key" mat-cell *matCellDef="let country"> {{country.key}} </td>

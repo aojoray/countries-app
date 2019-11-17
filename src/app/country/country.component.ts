@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class CountryInfoComponent implements OnInit {
   country;
   subscription: Subscription;
-  labels = { 'Name': 'name', 'Currency': 'currencies', 'Lat/Long': 'latlng', 'Land Area': 'area'};
+  labels = { 'Name': 'name', 'Currency Name': 'currencies', 'Latitude/longitude': 'latlng', 'Land Area': 'area'};
   // labels = { 'Flag': 'flag', 'Name': 'name', 'Currency': 'currencies', 'Lat/Long': 'latlng', 'Land Area': 'area'};
   columnsToDisplay = ['key', 'content'];
   transformed;
@@ -31,10 +31,10 @@ export class CountryInfoComponent implements OnInit {
     Object.keys(this.labels).forEach(k => {
       let cont;
       switch (k) {
-        case 'Currency':
-          cont = data[this.labels[k]][0].code + ' / ' + data[this.labels[k]][0].symbol;
+        case 'Currency Name':
+          cont = data[this.labels[k]][0].name + ' (' + data[this.labels[k]][0].symbol + ')';
           break;
-        case 'Lat/Long':
+        case 'Latitude/longitude':
           cont = data[this.labels[k]].join(' / ');
           break;
         default:
