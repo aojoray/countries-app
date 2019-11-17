@@ -25,12 +25,10 @@ export class Service {
         return this.country.asObservable();
     }
     setCountry(country: Country) {
-        console.log('SET!! ', country);
         this.country.next(this.format(country));
     }
 
     getHistory(): Observable<Country[]> {
-        // return this.country.asObservable();
         return this.histories;
     }
     addHistory(country: Country) {
@@ -43,31 +41,6 @@ export class Service {
             this.dataStore.histories = temp.concat(this.dataStore.histories);
             this._histories.next(Object.assign({}, this.dataStore).histories);
         }
-        // this.dataStore.histories.forEach(el => {
-        //     // if (t.id === data.id) { this.dataStore.todos[i] = data; }
-        //     if (!this.historymap[el.alpha3Code]) {
-        //         this.historymap[el.alpha3Code] = 1;
-        //         if (this.dataStore.histories.length === 10) {
-        //             this.dataStore.histories.pop();
-        //         }
-        //         let temp = [el];
-        //         this.histories = temp.concat(this.histories);
-        //     }
-        //     this.country.next(this.format(country));
-        // });
-
-        // this._todos.next(Object.assign({}, this.dataStore).todos);
-
-        // console.log('SET!! ', country);
-        // if (!this.historymap[country.alpha3Code]) {
-        //     this.historymap[country.alpha3Code] = 1;
-        //     if (this.histories.length === 10) {
-        //         this.histories.pop();
-        //     }
-        //     let temp = [country];
-        //     this.histories = temp.concat(this.histories);
-        // }
-        // this.country.next(this.format(country));
     }
 
 

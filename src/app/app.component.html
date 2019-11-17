@@ -9,8 +9,8 @@
             <input #country class="form-control" type="text" placeholder="Country name" matInput
               [formControl]="countryctrl" [matAutocomplete]="auto" name="country" autocomplete="on" ngModel required>
             <button mat-button type="submit" class="input-group-text" (click)="searchCountry(country)">Search</button>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let country of filteredOptions | async" [value]="country.name" (optionSelected)="searchCountry(country)">
+            <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="searchCountry(country)">
+              <mat-option *ngFor="let country of filteredOptions | async" [value]="country.name">
                 {{country.name}} ({{country.alpha2Code}})
               </mat-option>
             </mat-autocomplete>

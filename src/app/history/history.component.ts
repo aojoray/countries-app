@@ -16,7 +16,7 @@ export class HistoryComponent implements OnInit {
     // subscribe to app component messages
     this.subscription = this.service.getHistory().subscribe(data => {
       console.log(data);
-      if (data !== undefined) {
+      if (data !== undefined && data.length > 0) {
         this.histories = data;
       }
     });
