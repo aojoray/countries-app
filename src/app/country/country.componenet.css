@@ -6,3 +6,21 @@ body {
     margin: 0;
     font-family: "Raleway";
 }
+
+.flag {
+    min-width: 20%;
+    display: inline-block;
+    max-width: 250px;
+    padding: 10px;
+    background: #f4f4f4;
+}
+
+.key {
+    width: 10em;
+    max-width: 200px;
+}
+
+.content {
+    width: 15em;
+    max-width: 200px;
+}

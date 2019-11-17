@@ -5,12 +5,12 @@
       <div class="form-group">
         <h1 class="text-center text-primary">Countries lookup</h1>
         <div class="input-group-prepend">
-          <mat-form-field>
+          <mat-form-field style="width: 100%">
             <input #country class="form-control" type="text" placeholder="Country name" matInput
               [formControl]="countryctrl" [matAutocomplete]="auto" name="country" autocomplete="on" ngModel required>
             <button mat-button type="submit" class="input-group-text" (click)="searchCountry(country)">Search</button>
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let country of filteredOptions | async" [value]="country.name">
+              <mat-option *ngFor="let country of filteredOptions | async" [value]="country.name" (optionSelected)="searchCountry(country)">
                 {{country.name}} ({{country.alpha2Code}})
               </mat-option>
             </mat-autocomplete>

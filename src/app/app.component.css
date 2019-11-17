@@ -20,9 +20,7 @@ body {
     z-index: 1;
 }
 
-form {
-
-}
+form {}
 
 form h1 {
     color: #eeb007;
@@ -52,6 +50,7 @@ form input[type=text]::placeholder {
 
 form .input-group-text {
     background: #eeb007;
+    float: right;
     /* height: fit-content;
     padding: 1em 10px;
     margin: 10px;

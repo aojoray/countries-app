@@ -11,7 +11,8 @@ import { Subscription } from 'rxjs';
 export class CountryInfoComponent implements OnInit {
   country;
   subscription: Subscription;
-  labels = { 'Flag': 'flag', 'Name': 'name', 'Currency': 'currencies', 'Lat/Long': 'latlng', 'Land Area': 'area'};
+  labels = { 'Name': 'name', 'Currency': 'currencies', 'Lat/Long': 'latlng', 'Land Area': 'area'};
+  // labels = { 'Flag': 'flag', 'Name': 'name', 'Currency': 'currencies', 'Lat/Long': 'latlng', 'Land Area': 'area'};
   columnsToDisplay = ['key', 'content'];
   transformed;
   constructor(private service: Service) {

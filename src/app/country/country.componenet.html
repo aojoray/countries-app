@@ -1,11 +1,11 @@
 <div *ngIf="country">
-  <p>{{country.name}}</p>
+  <img class="flag" src={{country.flag}}/><p>{{country.name}}</p>
   <table mat-table [dataSource]="transformed">
     <ng-container matColumnDef="key">
-      <td mat-cell *matCellDef="let country"> {{country.key}} </td>
+      <td class="key" mat-cell *matCellDef="let country"> {{country.key}} </td>
     </ng-container>
     <ng-container matColumnDef="content">
-      <td mat-cell *matCellDef="let country"> {{country.content}} </td>
+      <td class="content" mat-cell *matCellDef="let country"> {{country.content}} </td>
     </ng-container>
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay ;"></tr>
   </table>
