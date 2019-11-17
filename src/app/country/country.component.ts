@@ -28,25 +28,32 @@ export class CountryInfoComponent {
   transformData(data) {
     let temp=[];
     Object.keys(this.labels).forEach(k => {
-      let cont;
-      switch (k) {
-        case 'Currency Name':
-          cont = data[this.labels[k]][0].name + ' (' + data[this.labels[k]][0].symbol + ')';
-          break;
-        case 'Latitude/longitude':
-          cont = data[this.labels[k]].join(' / ');
-          break;
-        default:
-          cont = data[this.labels[k]];
-          break;
-      }
       let row = {
         key: k,
-        content: cont
+        content: this.format(k, data[this.labels[k]])
       };
       temp.push(row);
     });
     return new MatTableDataSource(temp);
+  }
+
+  format(k, value) {
+    let cont;
+    switch (k) {
+      case 'Currency Name':
+        cont = value[0].name + ' (' + value[0].symbol + ')';
+        break;
+      case 'Latitude/longitude':
+        cont = value && value.length > 0 ? value.join(' / ') : 'unknown';
+        break;
+      case 'Land Area':
+        cont = value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '	\u33A2' : 'unknown';
+        break;
+      default:
+        cont = value;
+        break;
+    }
+    return cont;
   }
 }
 
