@@ -45,13 +45,9 @@ form input[type=text]::placeholder {
     padding: 1em;
     margin: 1em auto;
     color: #666;
-}
-
-.history li i {
-    float: right;
-    color: #888;
     cursor: pointer;
 }
+
 
 form .input-group-text {
     background: #eeb007;

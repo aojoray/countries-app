@@ -19,11 +19,8 @@
       </div>
     </form>
 
-    <div class="history">
-      <h4>Search History</h4>
-      <ul class="list">
-        <li *ngFor="let country of histories; let i=index"><span>{{country.name}} ({{country.alpha2Code}})</span></li>
-      </ul>
+    <div>
+      <app-history></app-history>
     </div>
   </div>
 

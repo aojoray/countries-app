@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Service } from './service';
 import { CountryInfoComponent } from './country/country.component';
+import { HistoryComponent } from './history/history.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
@@ -25,7 +26,8 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-    CountryInfoComponent
+    CountryInfoComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,8 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'countries-app';
-  histories = [];
-  historymap = {};
+  // histories = [];
+  // historymap = {};
   countries = [];
   show = true;
   countryctrl = new FormControl();
@@ -55,28 +55,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   searchCountry(input) {
-    console.log(input);
+    // console.log(input);
     let selected = input.value;
     if (selected != null && selected !== '') {
       let selectedCountry = this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase()))[0];
-      console.log(selectedCountry);
       this.service.setCountry(selectedCountry);
-      this.storeHistory(selectedCountry);
-      // this.histories.push(selectedCountry);
+      this.service.addHistory(selectedCountry);
       this.countryctrl.reset();
       this.show = true;
     }
   }
-
-  storeHistory(country) {
-    if (!this.historymap[country.alpha3Code]) {
-      this.historymap[country.alpha3Code] = 1;
-      if (this.histories.length === 10) {
-        this.histories.pop();
-      }
-      let temp = [country];
-      this.histories = temp.concat(this.histories);
-    }
-  }
-
 }

@@ -1,6 +1,6 @@
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, BehaviorSubject  } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -11,7 +11,11 @@ export class Service {
         this.getCountries();
     }
     private country = new Subject<any>();
-
+    // ref: https://coryrylan.com/blog/angular-observable-data-services
+    private _histories = new BehaviorSubject<Country[]>([]);
+    private dataStore: { histories: Country[] } = { histories: [] };
+    readonly histories = this._histories.asObservable();
+    historymap = {};
 
     getCountries() {
         return this.http.get(this.API).pipe(map((res: Response)  => res.json()));
@@ -24,6 +28,48 @@ export class Service {
         console.log('SET!! ', country);
         this.country.next(this.format(country));
     }
+
+    getHistory(): Observable<Country[]> {
+        // return this.country.asObservable();
+        return this.histories;
+    }
+    addHistory(country: Country) {
+        if (!this.historymap[country.alpha3Code]) {
+            this.historymap[country.alpha3Code] = 1;
+            if (this.dataStore.histories.length === 10) {
+                this.dataStore.histories.pop();
+            }
+            let temp = [country];
+            this.dataStore.histories = temp.concat(this.dataStore.histories);
+            this._histories.next(Object.assign({}, this.dataStore).histories);
+        }
+        // this.dataStore.histories.forEach(el => {
+        //     // if (t.id === data.id) { this.dataStore.todos[i] = data; }
+        //     if (!this.historymap[el.alpha3Code]) {
+        //         this.historymap[el.alpha3Code] = 1;
+        //         if (this.dataStore.histories.length === 10) {
+        //             this.dataStore.histories.pop();
+        //         }
+        //         let temp = [el];
+        //         this.histories = temp.concat(this.histories);
+        //     }
+        //     this.country.next(this.format(country));
+        // });
+
+        // this._todos.next(Object.assign({}, this.dataStore).todos);
+
+        // console.log('SET!! ', country);
+        // if (!this.historymap[country.alpha3Code]) {
+        //     this.historymap[country.alpha3Code] = 1;
+        //     if (this.histories.length === 10) {
+        //         this.histories.pop();
+        //     }
+        //     let temp = [country];
+        //     this.histories = temp.concat(this.histories);
+        // }
+        // this.country.next(this.format(country));
+    }
+
 
     format(country: Country) {
         let parsed = {
@@ -45,5 +91,6 @@ export interface Country {
     latlng: [];
     area: number;
     alpha2Code: string;
+    alpha3Code: string;
 }
 

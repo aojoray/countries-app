@@ -1,0 +1,20 @@
+/*Google fonts*/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.history {
+    margin-top: 1em;
+}
+
+.history .list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.history li {
+    background: #fff;
+    border-left: 4px solid #eeb007;
+    padding: 1em;
+    margin: 1em auto;
+    color: #666;
+    cursor: pointer;
+}
