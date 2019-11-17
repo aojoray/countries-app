@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Service } from './service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+// import { , Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +13,6 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'countries-app';
-  // histories = [];
-  // historymap = {};
   countries = [];
   show = true;
   countryctrl = new FormControl();
@@ -48,14 +46,12 @@ export class AppComponent implements OnInit, OnDestroy {
   private _filter(value: string): string[] {
     const filterValue = value ? value.toLowerCase() : '';
     if (filterValue.length >= 3) {
-    // return this.countries.filter(country => country.name.toLowerCase().includes(filterValue));
       return this.countries.filter(country => country.name.toLowerCase().indexOf(filterValue) === 0).slice(0, 9);
     }
   }
 
 
   searchCountry(input) {
-    // console.log(input);
     let selected = input.value;
     if (selected != null && selected !== '') {
       let selectedCountry = this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase()))[0];

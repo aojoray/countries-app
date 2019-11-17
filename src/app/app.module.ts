@@ -14,14 +14,7 @@ import { MatTableModule } from '@angular/material';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-// import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatRippleModule,
-  MatAutocompleteModule
-} from '@angular/material';
+import {  MatButtonModule,  MatFormFieldModule,  MatInputModule,  MatRippleModule,  MatAutocompleteModule} from '@angular/material';
 
 @NgModule({
   declarations: [

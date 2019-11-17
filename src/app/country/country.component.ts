@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Service } from '../service';
 import { Subscription } from 'rxjs';
@@ -8,11 +8,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './country.componenet.html',
   styleUrls: ['./country.componenet.css']
 })
-export class CountryInfoComponent implements OnInit {
+export class CountryInfoComponent {
   country;
   subscription: Subscription;
   labels = { 'Name': 'name', 'Currency Name': 'currencies', 'Latitude/longitude': 'latlng', 'Land Area': 'area'};
-  // labels = { 'Flag': 'flag', 'Name': 'name', 'Currency': 'currencies', 'Lat/Long': 'latlng', 'Land Area': 'area'};
   columnsToDisplay = ['key', 'content'];
   transformed;
   constructor(private service: Service) {
@@ -48,9 +47,6 @@ export class CountryInfoComponent implements OnInit {
       temp.push(row);
     });
     return new MatTableDataSource(temp);
-  }
-
-  ngOnInit() {
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Service } from '../service';
 import { Subscription } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './history.componenet.html',
   styleUrls: ['./history.componenet.css']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent {
   histories;
   country;
   subscription: Subscription;
@@ -24,9 +24,6 @@ export class HistoryComponent implements OnInit {
 
   loadInfo(country) {
     this.service.setCountry(country);
-  }
-
-  ngOnInit() {
   }
 }
 
