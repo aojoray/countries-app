@@ -4,7 +4,7 @@ import { Service } from '../service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'country-info',
+  selector: 'app-country-info',
   templateUrl: './country.componenet.html',
   styleUrls: ['./country.componenet.css']
 })

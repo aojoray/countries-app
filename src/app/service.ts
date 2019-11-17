@@ -4,15 +4,12 @@ import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
-
 @Injectable()
 export class Service {
     API = 'https://restcountries.eu/rest/v2/all';
-    // constructor(private http: Http) { }
     constructor(private http: Http) {
         this.getCountries();
     }
-    // private country = new Subject<Country>();
     private country = new Subject<any>();
 
 
