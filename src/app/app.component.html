@@ -3,7 +3,7 @@
   <div class="form-continer">
     <form #countryform="ngForm" (ngSubmit)="countryform.resetForm()">
       <div class="form-group">
-        <h1 class="text-center text-primary">Countries lookup</h1>
+        <h1>Countries lookup</h1>
         <div class="input-group-prepend">
           <mat-form-field style="width: 100%">
             <input #country class="form-control" type="text" placeholder="Country name" matInput
@@ -20,8 +20,9 @@
     </form>
 
     <div class="history">
-      <ul class="list-instyled">
-        <li *ngFor="let country of histories; let i=index"><span *ngIf="i<10">{{country.name}} ({{country.alpha2Code}})</span></li>
+      <h4>Search History</h4>
+      <ul class="list">
+        <li *ngFor="let country of histories; let i=index"><span>{{country.name}} ({{country.alpha2Code}})</span></li>
       </ul>
     </div>
   </div>

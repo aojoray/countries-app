@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'countries-app';
-  histories = ['Hello', 'World'];
+  histories = [];
   countries = [];
   show = true;
   countryctrl = new FormControl();
@@ -57,7 +57,10 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log(input);
     let selected = input.value;
     if (selected != null && selected !== '') {
-      this.service.setCountry(this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase()))[0]);
+      let selectedCountry = this.countries.filter(country => country.name.toLowerCase().includes(selected.toLowerCase()))[0];
+      console.log(selectedCountry);
+      this.service.setCountry(selectedCountry);
+      this.histories.push(selectedCountry);
       this.countryctrl.reset();
       this.show = true;
     }

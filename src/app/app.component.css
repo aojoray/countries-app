@@ -34,6 +34,11 @@ form input[type=text]::placeholder {
     margin-top: 1em;
 }
 
+.history .list {
+    list-style-type: none;
+    padding: 0;
+}
+
 .history li {
     background: #fff;
     border-left: 4px solid #eeb007;
@@ -51,11 +56,6 @@ form input[type=text]::placeholder {
 form .input-group-text {
     background: #eeb007;
     float: right;
-    /* height: fit-content;
-    padding: 1em 10px;
-    margin: 10px;
-    font-weight: bold;
-    cursor: pointer; */
 }
 
 form .input-group-text i {
