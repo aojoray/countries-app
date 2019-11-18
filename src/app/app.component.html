@@ -11,7 +11,7 @@
             <button mat-button type="submit" class="input-group-text" (click)="searchCountry(country)">Search</button>
             <mat-autocomplete #auto="matAutocomplete"  (optionSelected)="searchCountry(country)">
               <mat-option *ngFor="let country of filteredOptions | async" [value]="country.name">
-                {{country.name}} ({{country.alpha2Code}})
+                {{country.name}} ({{country.alpha3Code}})
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -25,7 +25,7 @@
     
   </div>
 
-  <div class="data" *ngIf="show">
+  <div class="data" >
     <app-country-info></app-country-info>
   </div>
 

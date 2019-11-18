@@ -3,7 +3,6 @@ import { Service } from './service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-// import { , Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +13,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'countries-app';
   countries = [];
-  show = true;
   countryctrl = new FormControl();
   countryform = new FormGroup({
     countryctrl: new FormControl()
@@ -58,7 +56,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.service.setCountry(selectedCountry);
       this.service.addHistory(selectedCountry);
       this.countryctrl.reset();
-      this.show = true;
     }
   }
 }
