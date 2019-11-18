@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Service } from '../service';
+import { Service, Country } from '../service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,16 +8,17 @@ import { Subscription } from 'rxjs';
   templateUrl: './country.componenet.html',
   styleUrls: ['./country.componenet.css']
 })
-export class CountryInfoComponent {
-  country;
+
+/** CountryInfoComponent is responsible for displaying information of selected countries */
+export class CountryInfoComponent implements OnDestroy{
+  country; // selected country
   subscription: Subscription;
-  labels = { 'Name': 'name', 'Currency Name': 'currencies', 'Latitude/longitude': 'latlng', 'Land Area': 'area'};
+  labels = { 'Name': 'name', 'Currency Name': 'currencies', 'Latitude/longitude': 'latlng', 'Land Area': 'area'}; // Labels of table
   columnsToDisplay = ['key', 'content'];
-  transformed;
+  transformed; // transformed data for table
   constructor(private service: Service) {
-    // subscribe to app component messages
+    // subscribe to app component messages (selected country)
     this.subscription = this.service.getCountry().subscribe(data => {
-      console.log(data);
       if (data !== undefined) {
         this.country = data;
         this.transformed = this.transformData(data);
@@ -25,19 +26,33 @@ export class CountryInfoComponent {
     });
   }
 
-  transformData(data) {
+  // unsubscribe to avoid memory leackage
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  /**
+   * Format country data to display on mat-table. This function creates a list of rows.
+   * @param data: country object
+   */
+  transformData(data: Country) {
     let temp=[];
     Object.keys(this.labels).forEach(k => {
       let row = {
         key: k,
-        content: this.format(k, data[this.labels[k]])
+        content: this._format(k, data[this.labels[k]])
       };
       temp.push(row);
     });
     return new MatTableDataSource(temp);
   }
 
-  format(k, value) {
+  /**
+   * Helper function for formating data depending on spec
+   * @param k: key of row
+   * @param value: value of row
+   */
+  private _format(k, value) {
     let cont;
     switch (k) {
       case 'Currency Name':

@@ -36,8 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  // on form submit, search selected country then send it to service for other components
-  searchCountry(input) {
+  /**
+   * on form submit, search selected country then send it to service for other components
+   * @param input: DOM element getting user input for searching a country
+   */
+  searchCountry(input: any) {
     let selected = input.value;
     if (selected != null && selected !== '') {
       let selectedCountry = this.countries.filter(country => this._isMatching(country, this._getRegex(selected)))[0];
@@ -49,19 +52,31 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  /* Helper function reutrning a match list for search */
+  /**
+   * Helper function reutrning a match list for search
+   * @param value: string of country name or ISO code user supplied  
+   */
   private _filter(value: string): string[] {
     let filterValue = value ? value.toLowerCase() : '';
     if (filterValue.length >= 3) {
       return this.countries.filter(country => this._isMatching(country, this._getRegex(filterValue))).slice(0, 9);
     }
   }
-  /* Helper funciton for _filter returns test result for multiple attirbutes of an object*/
+  /**
+   * Helper funciton for _filter returns test result for multiple attirbutes of an object
+   * @param country: country object
+   * @param reg: regex expression for testing
+   * @returns boolean value for test result for both country name and alpha3code
+   */
   private _isMatching(country: Country, reg: RegExp): boolean {
     return reg.test(country.name.replace(/[^a-zA-Z0-9_\s]/g, '')) || reg.test(country.alpha3Code);
   }
 
-  /* Helper funciton for _filter returning regex expression*/
+  /**
+   * Helper funciton for _filter returning regex expression
+   * @param input user input
+   * @returns RegExp created based on user input
+   */
   private _getRegex(input: string): RegExp {
     input = input.replace(/[^a-zA-Z0-9_\s]/g, '');
     let exp = '(' + input;

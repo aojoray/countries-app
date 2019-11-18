@@ -7,9 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class Service {
     API = 'https://restcountries.eu/rest/v2/all';
-    constructor(private http: Http) {
-        // this.getCountries();
-    }
+    constructor(private http: Http) {}
     private country = new Subject<any>();
     // ref: https://coryrylan.com/blog/angular-observable-data-services
     private _histories = new BehaviorSubject<Country[]>([]);
@@ -17,20 +15,27 @@ export class Service {
     readonly histories = this._histories.asObservable();
     historymap = {};
 
+    /**  getCountries returns a list of all countries */
     getCountries() {
         return this.http.get(this.API).pipe(map((res: Response)  => res.json()));
     }
 
+    /**  getCountry returns an observable Country object that is being selected */
     getCountry(): Observable<Country> {
         return this.country.asObservable();
     }
+
+    /**  setCountry takes a Country parameter being selected */
     setCountry(country: Country) {
         this.country.next(this.format(country));
     }
 
+    /**  getHistory returns a list of observable Countries being searched by user */
     getHistory(): Observable<Country[]> {
         return this.histories;
     }
+
+    /**  addHistory takes a Country object and store it in an observable list of countries being searched (histories) */
     addHistory(country: Country) {
         if (!this.historymap[country.alpha3Code]) {
             this.historymap[country.alpha3Code] = 1;
@@ -43,7 +48,7 @@ export class Service {
         }
     }
 
-
+    /** helper function to format country object */
     format(country: Country) {
         let parsed = {
             name: country.name,
