@@ -11,8 +11,8 @@
     "postinstall": "ng build --aot --prod"
   },
   "engines": {
-    "node": "8.12.0",
-    "npm": "6.4.1"
+    "node": "~12.13.0",
+    "npm": "~6.4.1"
   },
   "private": true,
   "dependencies": {
@@ -27,7 +27,6 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "angular-cli-ghpages": "^0.6.0",
     "angular-in-memory-web-api": "^0.9.0",
     "classlist.js": "^1.1.20150312",
     "express": "^4.17.1",
