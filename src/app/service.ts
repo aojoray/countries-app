@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 export class Service {
     API = 'https://restcountries.eu/rest/v2/all';
     constructor(private http: Http) {
-        this.getCountries();
+        // this.getCountries();
     }
     private country = new Subject<any>();
     // ref: https://coryrylan.com/blog/angular-observable-data-services

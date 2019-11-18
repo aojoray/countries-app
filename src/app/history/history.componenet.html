@@ -1,7 +1,6 @@
 <div class="history" *ngIf="histories">
   <h4>Search History</h4>
   <ul class="list">
-    <!-- <li *ngFor="let country of histories; let i=index" (click)="loadInfo(country)"><button mat-button><span>{{country.name}} ({{country.alpha3Code}})</span></button></li> -->
     <button mat-button *ngFor="let country of histories; let i=index" (click)="loadInfo(country)"><span>{{country.name}} ({{country.alpha3Code}})</span></button>
   </ul>
 </div>
