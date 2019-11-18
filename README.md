@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 You can see the deployed app at githubPage (https://aojoray.github.io/countries-app/) 
 
+## Deployed on Heroku
+
+You can see the deployed app on (https://countries-app-flare.herokuapp.com/) 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
