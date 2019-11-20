@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Deployed on Github
 
-You can see the deployed app at githubPage (https://aojoray.github.io/countries-app/) 
+You can see the deployed app at githubPage (https://devsoniakor.github.io/countries-app/) 
 
 ## Deployed on Heroku
 
