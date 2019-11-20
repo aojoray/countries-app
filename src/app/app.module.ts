@@ -20,7 +20,7 @@ import {  MatButtonModule,  MatFormFieldModule,  MatInputModule,  MatRippleModul
   declarations: [
     AppComponent,
     CountryInfoComponent,
-    HistoryComponent
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
