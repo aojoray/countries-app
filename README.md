@@ -8,7 +8,7 @@ You can see the deployed app at githubPage (https://devsoniakor.github.io/countr
 
 ## Deployed on Heroku
 
-You can see the deployed app on (https://countries-app-flare.herokuapp.com/) 
+You can see the deployed app on (https://countries-app-angular.herokuapp.com/) 
 
 ## Development server
 
