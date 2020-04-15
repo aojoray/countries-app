@@ -1,4 +1,4 @@
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, BehaviorSubject  } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class Service {
     API = 'https://restcountries.eu/rest/v2/all';
-    constructor(private http: Http) {}
+    constructor(private http: HttpClient) {}
     private country = new Subject<any>();
     // ref: https://coryrylan.com/blog/angular-observable-data-services
     private _histories = new BehaviorSubject<Country[]>([]);
@@ -17,7 +17,7 @@ export class Service {
 
     /**  getCountries returns a list of all countries */
     getCountries() {
-        return this.http.get(this.API).pipe(map((res: Response)  => res.json()));
+        return this.http.get(this.API).pipe(map((res: Response)  => res));
     }
 
     /**  getCountry returns an observable Country object that is being selected */

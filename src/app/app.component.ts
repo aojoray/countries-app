@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Service, Country } from './service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -21,8 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Getting country list from service (API acces point)
-    this.service.getCountries().subscribe(res => {
-      this.countries = res;
+    this.service.getCountries().subscribe(async res => {
+      this.countries = await res;
       this.filteredOptions = this.countryctrl.valueChanges // filtered option for autocomplete
         .pipe(
           startWith(''),

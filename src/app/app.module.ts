@@ -10,11 +10,14 @@ import { HistoryComponent } from './history/history.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import {  MatButtonModule,  MatFormFieldModule,  MatInputModule,  MatRippleModule,  MatAutocompleteModule} from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,6 @@ import {  MatButtonModule,  MatFormFieldModule,  MatInputModule,  MatRippleModul
     ReactiveFormsModule,
     MatSliderModule,
     MatTableModule,
-    HttpModule,
     HttpClientModule,
     MatAutocompleteModule,
     MatFormFieldModule,
