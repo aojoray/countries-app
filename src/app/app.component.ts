@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Service, Country } from './service';
+import { Service, Country } from './services/service';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -19,10 +19,10 @@ export class AppComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   constructor(private service: Service) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // Getting country list from service (API acces point)
     this.service.getCountries().subscribe(async res => {
-      this.countries = await res;
+      this.countries = res;
       this.filteredOptions = this.countryctrl.valueChanges // filtered option for autocomplete
         .pipe(
           startWith(''),
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
    * on form submit, search selected country then send it to service for other components
    * @param input: DOM element getting user input for searching a country
    */
-  searchCountry(input: any) {
+  searchCountry(input: HTMLInputElement): void {
     let selected = input.value;
     if (selected != null && selected !== '') {
       let selectedCountry = this.countries.filter(country => this._isMatching(country, this._getRegex(selected)))[0];

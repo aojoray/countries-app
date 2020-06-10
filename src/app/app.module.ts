@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Service } from './service';
+import { Service } from './services/service';
 import { CountryInfoComponent } from './country/country.component';
 import { HistoryComponent } from './history/history.component';
 

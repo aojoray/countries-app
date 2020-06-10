@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Service, Country } from '../service';
+import { Service, Country } from '../services/service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -35,10 +35,10 @@ export class CountryInfoComponent implements OnDestroy{
    * Format country data to display on mat-table. This function creates a list of rows.
    * @param data: country object
    */
-  transformData(data: Country) {
+  transformData(data: Country): MatTableDataSource<Row> {
     let temp=[];
     Object.keys(this.labels).forEach(k => {
-      let row = {
+      let row: Row = {
         key: k,
         content: this._format(k, data[this.labels[k]])
       };
@@ -52,14 +52,14 @@ export class CountryInfoComponent implements OnDestroy{
    * @param k: key of row
    * @param value: value of row
    */
-  private _format(k, value) {
+  private _format(k: Row["key"], value: Row["content"]): string | number {
     let cont;
     switch (k) {
       case 'Currency Name':
         cont = value[0].name + ' (' + value[0].symbol + ')';
         break;
       case 'Latitude/longitude':
-        cont = value && value.length > 0 ? value.join(' / ') : 'unknown';
+        cont = value && typeof value === 'object' && value.length > 0 ? value.join(' / ') : 'unknown';
         break;
       case 'Land Area':
         cont = value ? value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '	\u33A2' : 'unknown';
@@ -70,5 +70,10 @@ export class CountryInfoComponent implements OnDestroy{
     }
     return cont;
   }
+}
+
+type Row = {
+  key: string;
+  content: string | number | number[];
 }
 

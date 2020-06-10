@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Service } from '../service';
+import { Service, Country } from '../services/service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -27,7 +27,7 @@ export class HistoryComponent implements OnDestroy {
    * Handling click event of history element. Sets new selected country to display on CountryInfo component
    * @param country: selected country
    */
-  loadInfo(country) {
+  loadInfo(country: Country): void {
     this.service.setCountry(country);
   }
 
